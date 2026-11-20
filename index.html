@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Михаил — PPC-специалист: Яндекс Директ и VK Ads</title>
+<meta name="description" content="Михаил — junior PPC-специалист. Настраиваю Яндекс Директ и VK Ads, собираю квизы и чат-лендинги, делаю креативы. Ниши: новостройки и автомобили. Калькулятор стоимости на сайте.">
+<meta name="theme-color" content="#F3F5F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1420" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Михаил — PPC-специалист: Яндекс Директ и VK Ads">
+<meta property="og:description" content="Михаил — junior PPC-специалист. Настраиваю Яндекс Директ и VK Ads, собираю квизы и чат-лендинги, делаю креативы. Ниши: новостройки и автомобили. Калькулятор стоимости на сайте.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232D4BE0'/%3E%3Cpath d='M16 46V18h6l10 14 10-14h6v28h-7V30l-9 12-9-12v16z' fill='%23fff'/%3E%3Ccircle cx='50' cy='14' r='5' fill='%23F0A43A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: одна колонка как рекламный отчёт — шапка-«кабинет», затем строки-разделы с подписью слева и содержанием справа */
+:root {
+  --bg: #F3F5F9;
+  --surface: #FFFFFF;
+  --ink: #131A2B;
+  --muted: #5B6478;
+  --line: #D9DEE8;
+  --accent: #2D4BE0;
+  --accent-ink: #FFFFFF;
+  --warm: #F0A43A;
+  --display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --body: "Golos Text", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1420; --surface: #171E2E; --ink: #E8ECF5; --muted: #98A2B8;
+    --line: #2A3347; --accent: #7D93FF; --accent-ink: #0F1420; --warm: #F3B45A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1420; --surface: #171E2E; --ink: #E8ECF5; --muted: #98A2B8;
+  --line: #2A3347; --accent: #7D93FF; --accent-ink: #0F1420; --warm: #F3B45A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  gap: 56px;
+}
+.label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.15; }
+
+/* Шапка */
+.hero { display: grid; gap: 28px; }
+.status {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 13px; color: var(--muted);
+}
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--warm); box-shadow: 0 0 0 4px color-mix(in srgb, var(--warm) 25%, transparent); }
+.hero h1 { font-size: clamp(34px, 6.4vw, 64px); font-weight: 700; letter-spacing: -0.01em; }
+.hero h1 span { color: var(--accent); }
+.lead { max-width: 60ch; font-size: 19px; color: var(--muted); margin: 0; }
+.lead strong { color: var(--ink); font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px; border-radius: 10px;
+  font: 600 16px var(--body); text-decoration: none; cursor: pointer;
+  border: 1px solid transparent;
+}
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--accent); }
+.btn:focus-visible, .copy:focus-visible { outline: 3px solid var(--warm); outline-offset: 2px; }
+
+/* Строка отчёта: метрики, которые я веду */
+.metrics {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+}
+.metric { padding: 18px 20px; display: grid; gap: 4px; border-left: 1px solid var(--line); }
+.metric:first-child { border-left: 0; }
+.metric b { font-family: var(--mono); font-weight: 500; font-size: 20px; color: var(--accent); }
+.metric span { font-size: 14px; color: var(--muted); line-height: 1.4; }
+
+/* Разделы */
+.row { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; border-top: 1px solid var(--line); padding-top: 28px; }
+.row > .label { padding-top: 6px; }
+.row h2 { font-size: clamp(22px, 3vw, 28px); font-weight: 500; margin-bottom: 20px; }
+
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.service { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; display: grid; gap: 8px; align-content: start; }
+.service h3 { font-size: 17px; font-weight: 500; }
+.service p { margin: 0; color: var(--muted); font-size: 15.5px; }
+.tag { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+.niches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.niche { padding: 22px; border-radius: 12px; border: 1px solid var(--line); display: grid; gap: 10px; align-content: start; }
+.niche.main { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.niche.main .tag { color: inherit; opacity: 0.8; }
+.niche h3 { font-size: 22px; font-weight: 700; }
+.niche p { margin: 0; font-size: 15.5px; }
+.niche:not(.main) p { color: var(--muted); }
+.niche ul { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; font-size: 15px; line-height: 1.5; }
+.niche li { padding-left: 16px; position: relative; }
+.niche li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 7px; height: 7px; border-radius: 2px; background: var(--warm); }
+.niche li b { font-weight: 600; }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-bottom: 1px dashed var(--line); }
+.steps li:last-child { border-bottom: 0; }
+.steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--mono); color: var(--accent); font-size: 15px; padding-top: 2px; }
+.steps b { display: block; font-weight: 600; }
+.steps span { color: var(--muted); font-size: 15.5px; }
+
+.traits { display: flex; flex-wrap: wrap; gap: 10px; }
+.trait { padding: 10px 16px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 15.5px; }
+
+.contact {
+  background: var(--ink); color: var(--bg); border-radius: 16px;
+  padding: 36px 32px; display: grid; gap: 18px;
+}
+.contact h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 700; }
+.contact p { margin: 0; max-width: 52ch; opacity: 0.8; }
+.handle { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.handle code { font-family: var(--mono); font-size: 20px; user-select: all; }
+.contact .btn-primary { background: var(--warm); color: #131A2B; }
+.copy { background: transparent; border: 1px solid color-mix(in srgb, var(--bg) 35%, transparent); color: var(--bg); padding: 8px 14px; border-radius: 8px; font: 500 14px var(--body); cursor: pointer; }
+footer { color: var(--muted); font-size: 14px; }
+.page-main { display: grid; gap: 56px; }
+.skip { position: absolute; left: 16px; top: -100px; z-index: 20; background: var(--accent); color: var(--accent-ink); padding: 10px 16px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+.skip:focus { top: 16px; }
+.toast { position: fixed; left: 16px; right: 16px; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); z-index: 11; margin: 0 auto; max-width: 420px; background: var(--ink); color: var(--bg); padding: 12px 16px; border-radius: 10px; font-size: 14px; line-height: 1.45; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+.toast:empty { display: none; }
+
+@media (max-width: 760px) {
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metric:nth-child(3) { border-left: 0; }
+  .metric:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .row { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .services, .niches { grid-template-columns: minmax(0, 1fr); }
+  .contact { padding: 28px 20px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dot { animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--warm) 0%, transparent); } }
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+[hidden] { display: none !important; }
+.btn-link { background: transparent; color: var(--muted); padding-inline: 8px; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line); }
+.btn-link:hover { color: var(--ink); }
+.contact-label { color: inherit; opacity: .7; }
+.contact .btn-primary:focus-visible, .copy:focus-visible { outline-color: var(--accent); }
+
+/* Калькулятор */
+.calc { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; margin: 0; }
+.calc-fields { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 6px 22px; }
+.field { border: 0; margin: 0; padding: 18px 0; border-bottom: 1px dashed var(--line); min-width: 0; }
+.field:last-child { border-bottom: 0; }
+.field legend, .field .legend { font-weight: 600; font-size: 16px; padding: 0; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; float: left; width: 100%; }
+.field .legend { float: none; width: auto; margin: 0; }
+.field legend + * { clear: both; }
+.price { font-family: var(--mono); font-weight: 400; font-size: 12.5px; color: var(--muted); letter-spacing: .02em; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opts-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.opt { position: relative; cursor: pointer; }
+.opt input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.opt span { white-space: nowrap; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 46px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); font-size: 15px; font-weight: 500; line-height: 1.25; transition: border-color .15s, background .15s, color .15s; }
+.opt input[type=checkbox] + span::before { content: ""; width: 16px; height: 16px; margin-right: 10px; border-radius: 4px; border: 1.5px solid var(--muted); flex: none; }
+.opt input[type=checkbox]:checked + span::before { background: var(--accent-ink); border-color: var(--accent-ink); box-shadow: inset 0 0 0 3px var(--accent); }
+.opt:hover span { border-color: var(--accent); }
+.opt input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.opt input:focus-visible + span { outline: 3px solid var(--warm); outline-offset: 2px; }
+.legend-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+.count { font-family: var(--mono); font-size: 18px; color: var(--accent); font-weight: 500; white-space: nowrap; }
+input[type=range] { width: 100%; accent-color: var(--accent); height: 28px; margin: 0; cursor: pointer; }
+input[type=range]:focus-visible { outline: 3px solid var(--warm); outline-offset: 4px; border-radius: 4px; }
+.range-scale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+.summary { position: sticky; top: 20px; background: var(--ink); color: var(--bg); border-radius: 12px; padding: 22px; display: grid; gap: 14px; }
+.summary .label { color: inherit; opacity: .7; }
+.lines { margin: 0; display: grid; gap: 8px; }
+.lines div { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; }
+.lines dt { opacity: .75; }
+.lines dd { margin: 0; font-family: var(--mono); }
+.total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--bg) 25%, transparent); }
+.total span { font-weight: 600; }
+.total b { font-family: var(--display); font-weight: 700; font-size: 30px; color: var(--warm); white-space: nowrap; }
+.btn-block { justify-content: center; width: 100%; }
+.summary .btn-primary { background: var(--warm); color: #131A2B; }
+.summary .btn-primary:focus-visible { outline-color: var(--accent); }
+.hint { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--warm); min-height: 0; }
+.hint:empty { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .total b, :root:not([data-theme="light"]) .hint { color: #2D4BE0; }
+}
+:root[data-theme="dark"] .total b, :root[data-theme="dark"] .hint { color: #2D4BE0; }
+.note { margin: 0; font-size: 13px; line-height: 1.5; opacity: .7; }
+
+/* Плашка итога на мобильных */
+.sticky-total { display: none; }
+@media (max-width: 760px) {
+  .calc { grid-template-columns: minmax(0, 1fr); }
+  .calc-fields { padding: 4px 16px; }
+  .opt span { padding: 8px 8px; font-size: 14.5px; }
+  .opt input[type=checkbox] + span::before { margin-right: 8px; }
+  .summary { position: static; }
+  .sticky-total {
+    display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+    align-items: center; justify-content: space-between; gap: 12px;
+    padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+    background: var(--surface); border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 24px rgba(19, 26, 43, .08);
+    transform: translateY(0); transition: transform .2s ease;
+  }
+  .sticky-total.is-hidden { transform: translateY(110%); visibility: hidden; }
+  .sticky-total .st-label { font-size: 13px; color: var(--muted); display: block; line-height: 1.2; }
+  .sticky-total b { font-family: var(--display); font-size: 20px; color: var(--ink); }
+  .sticky-total .btn { padding: 12px 18px; font-size: 15px; }
+  body.has-sticky { padding-bottom: 76px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#calc">Перейти к калькулятору</a>
+<div class="wrap">
+<main class="page-main" id="main">
+
+  <header class="hero" id="top">
+    <div class="status"><span class="dot" aria-hidden="true"></span>Открыт к проектам и фрилансу</div>
+    <h1>Михаил. Привожу заявки из <span>Яндекс&nbsp;Директа</span> и&nbsp;VK&nbsp;Ads</h1>
+    <p class="lead">Junior PPC-специалист, 26 лет. Настраиваю рекламные кампании, собираю квизы и чат-лендинги под них и считаю, сколько стоит каждая заявка. Лучше всего знаю <strong>новостройки</strong>, сейчас развиваюсь в <strong>автотематике</strong>.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://t.me/Mikhail_SPI" target="_blank" rel="noopener">Написать в Telegram</a>
+      <a class="btn btn-ghost" href="#calc">Посчитать стоимость</a>
+      <a class="btn btn-link" href="#services">Что я делаю</a>
+    </div>
+  </header>
+
+  <section class="metrics" aria-label="Метрики, за которыми я слежу">
+    <div class="metric"><b>CPL</b><span>цена одной заявки</span></div>
+    <div class="metric"><b>CTR</b><span>кликабельность объявлений</span></div>
+    <div class="metric"><b>CR</b><span>конверсия квиза в заявку</span></div>
+    <div class="metric"><b>ДРР</b><span>доля рекламных расходов</span></div>
+  </section>
+
+  <section class="row" id="services">
+    <div class="label">Услуги</div>
+    <div>
+      <h2>Что я делаю для бизнеса</h2>
+      <div class="services">
+        <article class="service">
+          <span class="tag">Основное</span>
+          <h3>Яндекс Директ</h3>
+          <p>Настройка рекламных кампаний: поиск и РСЯ, семантика, минус-слова, корректировки ставок.</p>
+        </article>
+        <article class="service">
+          <span class="tag">Базовый уровень</span>
+          <h3>VK Ads</h3>
+          <p>Кампании на аудитории ВКонтакте: сегменты по интересам и геолокации, лид-формы.</p>
+        </article>
+        <article class="service">
+          <span class="tag">Конверсия</span>
+          <h3>Квизы и чат-лендинги</h3>
+          <p>Собираю в Marquiz и похожих конструкторах. Вопросы подбираю так, чтобы на выходе был тёплый лид, а не случайный клик.</p>
+        </article>
+        <article class="service">
+          <span class="tag">Креатив</span>
+          <h3>Креативы для рекламы</h3>
+          <p>Баннеры и короткие видео под объявления. Делаю несколько вариантов, чтобы тестировать и оставлять лучший.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="label">Ниши</div>
+    <div>
+      <h2>С какими нишами работаю</h2>
+      <div class="niches">
+        <article class="niche main">
+          <span class="tag">Основная ниша</span>
+          <h3>Новостройки</h3>
+          <p>Работаю с застройщиками и агентствами недвижимости. Отвечаю за путь клиента от объявления до заявки в отделе продаж.</p>
+          <ul>
+            <li><b>Изучаю ЦА.</b> Делю покупателей на сегменты: семьи под ипотеку, инвесторы, покупатели первого жилья. Под мотив каждого пишу свои объявления.</li>
+            <li><b>Привожу качественный трафик.</b> Квиз спрашивает о планировке, бюджете и способе оплаты, поэтому нецелевые отсеиваются ещё до звонка менеджера.</li>
+            <li><b>Оптимизирую РК по цене целевой заявки, а не клика.</b> Отключаю фразы и площадки, которые тратят бюджет впустую.</li>
+            <li><b>Ищу новые источники трафика.</b> Тестирую форматы и каналы, чтобы поток заявок не зависел от одной площадки.</li>
+          </ul>
+        </article>
+        <article class="niche">
+          <span class="tag">Развиваю</span>
+          <h3>Автомобили</h3>
+          <p>Переношу подход из недвижимости: машина — тоже дорогая покупка с долгим решением, и здесь тоже нужен тёплый лид.</p>
+          <ul>
+            <li><b>Изучаю ЦА автосалонов и сервисов.</b> Кто выбирает новую машину, кто хочет сдать старую в trade-in, кому пора на ТО.</li>
+            <li><b>Привожу качественный трафик.</b> Строю воронку под одно действие: запись на тест-драйв, оценку авто или визит в сервис.</li>
+            <li><b>Оптимизирую РК по цене записи</b> и по тому, сколько клиентов в итоге доехали до салона.</li>
+            <li><b>Ищу новые источники трафика.</b> Помимо Директа и VK Ads пробую геосервисы и Telegram-каналы.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="label">Процесс</div>
+    <div>
+      <h2>Как я работаю</h2>
+      <ol class="steps">
+        <li><div><b>Разбираю нишу и конкурентов</b><span>Смотрю, кто и как рекламируется, какие у них офферы.</span></div></li>
+        <li><div><b>Собираю семантику и настраиваю кампании</b><span>Яндекс Директ и VK Ads под вашу задачу и бюджет.</span></div></li>
+        <li><div><b>Делаю квиз или чат-лендинг</b><span>Посадочная страница, которая превращает клик в заявку.</span></div></li>
+        <li><div><b>Слежу за цифрами и оптимизирую</b><span>Ежедневно смотрю статистику, раз в неделю присылаю понятный отчёт.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="row" id="calc" aria-labelledby="calc-title">
+    <div class="label">Стоимость</div>
+    <div>
+      <h2 id="calc-title">Посчитайте стоимость</h2>
+      <form class="calc" id="calcForm" onsubmit="return false">
+        <div class="calc-fields">
+          <fieldset class="field">
+            <legend>Площадки <span class="price">1&nbsp;000&nbsp;₽ за настройку</span></legend>
+            <div class="opts">
+              <label class="opt"><input type="checkbox" name="platform" value="Яндекс Директ" checked><span>Яндекс Директ</span></label>
+              <label class="opt"><input type="checkbox" name="platform" value="VK Ads" checked><span>VK Ads</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="field">
+            <legend>Квиз <span class="price">500&nbsp;₽</span></legend>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="quiz" value="1"><span>Нужен</span></label>
+              <label class="opt"><input type="radio" name="quiz" value="0" checked><span>Не нужен</span></label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <div class="legend-row">
+              <label for="creatives" class="legend">Креативы <span class="price">100&nbsp;₽ за штуку</span></label>
+              <output id="creativesOut" for="creatives" class="count">4&nbsp;шт.</output>
+            </div>
+            <input type="range" id="creatives" name="creatives" min="0" max="10" step="1" value="4" aria-describedby="creativesOut">
+            <div class="range-scale" aria-hidden="true"><span>0</span><span>5</span><span>10</span></div>
+          </div>
+          <fieldset class="field">
+            <legend>Ведение рекламы <span class="price">3&nbsp;000&nbsp;₽/мес</span></legend>
+            <div class="opts opts-4">
+              <label class="opt"><input type="radio" name="months" value="0" checked><span>Не нужно</span></label>
+              <label class="opt"><input type="radio" name="months" value="1"><span>1 месяц</span></label>
+              <label class="opt"><input type="radio" name="months" value="3"><span>3 месяца</span></label>
+              <label class="opt"><input type="radio" name="months" value="6"><span>6 месяцев</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <aside class="summary" id="summary" aria-label="Итог расчёта">
+          <div class="label">Ваш расчёт</div>
+          <dl class="lines">
+            <div><dt>Площадки</dt><dd id="sumPlatforms">2&nbsp;000&nbsp;₽</dd></div>
+            <div><dt>Квиз</dt><dd id="sumQuiz">0&nbsp;₽</dd></div>
+            <div><dt>Креативы</dt><dd id="sumCreatives">400&nbsp;₽</dd></div>
+            <div><dt>Ведение</dt><dd id="sumMgmt">0&nbsp;₽</dd></div>
+          </dl>
+          <div class="total"><span>Итого</span><b id="total" aria-live="polite">2&nbsp;400&nbsp;₽</b></div>
+          <a class="btn btn-primary btn-block js-discuss" href="https://t.me/Mikhail_SPI" target="_blank" rel="noopener">Обсудить в Telegram</a>
+          <p class="hint" id="copyHint" role="status" aria-live="polite"></p>
+          <p class="note">Расчёт предварительный. Точную стоимость назову после короткого созвона о задаче.</p>
+        </aside>
+      </form>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="label">Обо мне</div>
+    <div>
+      <h2>Какой я в работе</h2>
+      <div class="traits">
+        <span class="trait">Аналитический склад ума</span>
+        <span class="trait">Стратег и тактик</span>
+        <span class="trait">Люблю цифры и отчёты</span>
+        <span class="trait">Создаю креативы</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="label contact-label">Контакты</div>
+    <h2>Обсудим ваш проект?</h2>
+    <p>Напишите в Telegram: какая ниша, какой бюджет и сколько сейчас стоит заявка. Отвечу и предложу, с чего начать.</p>
+    <div class="handle">
+      <code id="tg">@Mikhail_SPI</code>
+      <button class="copy" id="copyBtn" type="button" aria-live="polite">Скопировать</button>
+      <a class="btn btn-primary" href="https://t.me/Mikhail_SPI" target="_blank" rel="noopener">Открыть Telegram</a>
+    </div>
+  </section>
+
+</main>
+  <footer>Михаил · PPC-специалист · 2026</footer>
+</div>
+
+<div class="sticky-total is-hidden" id="stickyBar" aria-hidden="true">
+  <div><span class="st-label">Итого, предварительно</span><b id="stickyTotal">2&nbsp;400&nbsp;₽</b></div>
+  <a class="btn btn-primary js-discuss" href="https://t.me/Mikhail_SPI" target="_blank" rel="noopener">Обсудить</a>
+</div>
+<p class="toast" id="toast" role="status" aria-live="polite"></p>
+<script>
+(function () {
+  var PRICES = { platform: 1000, quiz: 500, creative: 100, month: 3000 };
+  function fmt(n) { return n.toLocaleString('ru-RU').replace(/\s/g, '\u00A0') + '\u00A0₽'; }
+  function calcTotal(s) {
+    var p = s.platforms.length * PRICES.platform;
+    var q = s.quiz ? PRICES.quiz : 0;
+    var c = s.creatives * PRICES.creative;
+    var m = s.months * PRICES.month;
+    return { platforms: p, quiz: q, creatives: c, mgmt: m, total: p + q + c + m };
+  }
+  window.calcTotal = calcTotal;
+
+  var form = document.getElementById('calcForm');
+  var $ = function (id) { return document.getElementById(id); };
+  function plural(n, a, b, c) { var m10 = n % 10, m100 = n % 100; return (m10 === 1 && m100 !== 11) ? a : (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) ? b : c; }
+  function readState() {
+    return {
+      platforms: Array.prototype.map.call(form.querySelectorAll('input[name=platform]:checked'), function (i) { return i.value; }),
+      quiz: form.querySelector('input[name=quiz]:checked').value === '1',
+      creatives: parseInt($('creatives').value, 10) || 0,
+      months: parseInt(form.querySelector('input[name=months]:checked').value, 10) || 0
+    };
+  }
+  function summaryText(s, r) {
+    var lines = ['Здравствуйте, Михаил! Мой расчёт с вашего сайта:'];
+    lines.push('— Площадки: ' + (s.platforms.length ? s.platforms.join(', ') + ' — ' + fmt(r.platforms) : 'не выбраны'));
+    lines.push('— Квиз: ' + (s.quiz ? 'нужен — ' + fmt(r.quiz) : 'не нужен'));
+    lines.push('— Креативы: ' + (s.creatives ? s.creatives + ' шт. — ' + fmt(r.creatives) : 'не нужны'));
+    lines.push('— Ведение рекламы: ' + (s.months ? s.months + ' ' + plural(s.months, 'месяц', 'месяца', 'месяцев') + ' — ' + fmt(r.mgmt) : 'не нужно'));
+    lines.push('Итого: ' + fmt(r.total) + ' (предварительно)');
+    return lines.join('\n').replace(/\u00A0/g, ' ');
+  }
+  window.calcSummaryText = function () { var s = readState(); return summaryText(s, calcTotal(s)); };
+
+  function render() {
+    var s = readState(), r = calcTotal(s);
+    $('sumPlatforms').textContent = fmt(r.platforms);
+    $('sumQuiz').textContent = fmt(r.quiz);
+    $('sumCreatives').textContent = fmt(r.creatives);
+    $('sumMgmt').textContent = fmt(r.mgmt);
+    $('total').textContent = fmt(r.total);
+    $('stickyTotal').textContent = fmt(r.total);
+    $('creativesOut').textContent = s.creatives + '\u00A0шт.';
+    $('creatives').setAttribute('aria-valuetext', s.creatives + ' ' + plural(s.creatives, 'креатив', 'креатива', 'креативов'));
+  }
+  form.addEventListener('input', render);
+  form.addEventListener('change', render);
+  render();
+
+  function copyText(text) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    } catch (e) {}
+    return new Promise(function (ok, fail) {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var done = false; try { done = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); done ? ok() : fail();
+    });
+  }
+  var hintTimer;
+  function showHint(msg, toast) {
+    var h = $(toast ? 'toast' : 'copyHint'); h.textContent = msg;
+    clearTimeout(hintTimer); hintTimer = setTimeout(function () { $('copyHint').textContent = ''; $('toast').textContent = ''; }, 8000);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.js-discuss'), function (a) {
+    a.addEventListener('click', function (e) {
+      var text = window.calcSummaryText();
+      var fromBar = !!a.closest('.sticky-total');
+      copyText(text).then(function () {
+        showHint('Расчёт скопирован — вставьте его в чат с Михаилом в Telegram.', fromBar);
+      }, function () {
+        showHint('Не удалось скопировать автоматически. Опишите выбранные услуги в чате.', fromBar);
+      });
+    });
+  });
+
+  // Плашка с итогом на мобильных: прячем, когда видны шапка или блок итога
+  var bar = $('stickyBar');
+  if ('IntersectionObserver' in window) {
+    var vis = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { vis[en.target.id] = en.isIntersecting; });
+      var hide = vis.top || vis.summary || vis.contact;
+      bar.classList.toggle('is-hidden', !!hide);
+      bar.setAttribute('aria-hidden', hide ? 'true' : 'false');
+    });
+    ['top', 'summary', 'contact'].forEach(function (id) { var el = $(id); if (el) io.observe(el); });
+  }
+  document.body.classList.add('has-sticky');
+
+  // Копирование ника
+  var btn = $('copyBtn');
+  btn.addEventListener('click', function () {
+    copyText('@Mikhail_SPI').then(function () {
+      btn.textContent = 'Скопировано'; setTimeout(function () { btn.textContent = 'Скопировать'; }, 1800);
+    }, function () {
+      var r = document.createRange(); r.selectNodeContents($('tg'));
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Выделено, нажмите Ctrl+C';
+    });
+  });
+})();
+</script>
+</body>
+</html>
